@@ -109,18 +109,68 @@ console.log(extend2(gdp, income, uRate));
 **Q3:**
 
 ```js
+const a = { a: 1 };
+const b = { a: 1 };
 
+console.log(a == b); //?
+console.log(a === b); //?
 ```
 
-**A3:**
+**A3-Answer:**
 
-```js
+## Comparing two objects
 
+Primitives like strings and numbers are compared by their value, while objects like arrays, dates, and plain objects are compared by their reference. That comparison by reference basically checks to see if the objects given refer to the same location in memory.
+
+```text
+a == b // false
+a === b  //false
 ```
 
 <hr />
 
-<!-- **Q1:**
+**Q4:**
+
+```js
+const employees = [
+  { skill: "css", user: "Bill" },
+  { skill: "javascript", user: "Chad" },
+  { skill: "javascript", user: "Bill" },
+  { skill: "css", user: "Sue" },
+  { skill: "javascript", user: "Sue" },
+  { skill: "html", user: "Sue" },
+];
+```
+
+```text
+[
+  { skill: 'css', user: [ 'Sue', 'Bill' ], count: 2 },
+  { skill: 'javascript', user: [ 'Chad', 'Bill', 'Sue' ], count: 3 },
+  { skill: 'html', user: [ 'Sue' ], count: 1 }
+];
+```
+
+**Q4-Answer:**
+
+```js
+const output = employees.reduce((acc, currentValue) => {
+  const matched = acc.find((value) => value.skill === currentValue.skill);
+  if (matched) {
+    matched.user.push(currentValue.user);
+    matched.count++;
+  } else {
+    currentValue.user = [currentValue.user];
+    currentValue.count = 1;
+    acc.push(currentValue);
+  }
+  return acc;
+}, []);
+```
+
+<hr />
+
+<!--
+**Q1:**
 
 ```js
 
@@ -132,4 +182,5 @@ console.log(extend2(gdp, income, uRate));
 
 ```
 
-<hr /> -->
+<hr />
+ -->
