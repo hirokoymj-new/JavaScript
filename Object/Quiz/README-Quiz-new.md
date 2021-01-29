@@ -169,6 +169,143 @@ const output = employees.reduce((acc, currentValue) => {
 
 <hr />
 
+**Q5:**
+
+```js
+const cityArray = [
+  { id: 1, city: "New York" },
+  { id: 2, city: "Los Angeles" },
+  { id: 3, city: "Washington DC" },
+  { id: 4, city: "San Jose" },
+  { id: 5, city: "Mountain View" },
+];
+```
+
+```text
+Checking if city id 2 exists in cityArray.
+```
+
+**Q5-Answer:**
+
+- find() returns matched object, filter() returns an array.
+
+```js
+const result = cityArray.find((value) => value.id === 2);
+console.log(result);
+//{ id: 2, city: 'Los Angeles' }
+
+const result2 = cityArray.filter((value) => value.id === 2);
+console.log(result2);
+//[ { id: 2, city: 'Los Angeles' } ]
+```
+
+<hr />
+
+**Q6:**
+
+```js
+const myArray = [
+  { color: "red", name: "redName" },
+  { color: "blue", name: "blueName" },
+  { color: "green", name: "greenName" },
+  { color: "yellow", name: "yellowName" },
+];
+```
+
+```text
+Create new array [ 'red', 'blue', 'green', 'yellow' ]
+```
+
+**Q6-Answer-1:**
+
+```js
+const output = myArray.reduce((acc, currentValue) => {
+  for ([key, value] of Object.entries(currentValue)) {
+    if (key === "color") {
+      acc.push(value);
+    }
+  }
+  return acc;
+}, []);
+```
+
+**Q6-Answer-2:**
+
+```js
+const output2 = myArray.map((value) => value.color);
+```
+
+<hr />
+
+**Q7:**
+
+```js
+const myArray = [
+  { color: "red", name: "redName" },
+  { color: "blue", name: "blueName" },
+  { color: "green", name: "greenName" },
+  { color: "yellow", name: "yellowName" },
+];
+```
+
+```text
+Find an index number of "color: blue".
+```
+
+**Q7-Answer-1:**
+
+```js
+const blueIndex2 = myArray
+  .map((value) => value.color) //[ 'red', 'blue', 'green', 'yellow' ]
+  .indexOf("blue");
+```
+
+**Q7-Answer-2:**
+
+```js
+const blueIndex3 = myArray.findIndex((value) => value.color === "blue");
+```
+
+<hr />
+
+**Q8:**
+
+```js
+const array = [
+  { name: "foo1", value: "val1" },
+  { name: "foo1", value: ["val2", "val3"] },
+  { name: "foo2", value: "val4" },
+];
+```
+
+```text
+[ { name: 'foo1', value: [ 'val1', 'val2', 'val3' ] },  { name: 'foo2', value: [ 'val4' ] } ]
+```
+
+**Q8-Answer:**
+
+```js
+const output = array.reduce((acc, currentValue) => {
+  const matched = acc.find((value) => value["name"] === currentValue["name"]);
+
+  if (matched) {
+    if (typeof currentValue["value"] === "object") {
+      const newVal = currentValue["value"].concat(matched["value"]);
+      console.log(newVal);
+      matched["value"] = newVal;
+    } else {
+      matched["value"] = currentValue["value"];
+    }
+  } else {
+    //Not existing
+    currentValue["value"] = [currentValue["value"]];
+    acc.push(currentValue);
+  }
+
+  return acc;
+}, []);
+```
+
 <!--
 **Q1:**
 

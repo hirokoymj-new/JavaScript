@@ -1,8 +1,4 @@
-//
-// Grouping array of objects with name key.
-//
-
-var array = [
+const array = [
   { name: "foo1", value: "val1" },
   { name: "foo1", value: ["val2", "val3"] },
   { name: "foo2", value: "val4" },
