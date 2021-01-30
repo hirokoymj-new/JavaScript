@@ -306,6 +306,172 @@ const output = array.reduce((acc, currentValue) => {
 }, []);
 ```
 
+<hr />
+
+**Q9:**
+
+```js
+const data = [
+  { description: "Rent", amount: 100, createdAt: 1000 },
+  { description: "Coffee", amount: 300, createdAt: -1000 },
+  { description: "Small Coffee", amount: 300, createdAt: -1000 },
+];
+```
+
+```text
+Find a desciption is 'Rent'.
+```
+
+**Q9-Answer:**
+
+```js
+const matched = data.find((value) => value.description === "Rent");
+// { description: 'Rent', amount: 100, createdAt: 1000 }
+```
+
+<hr />
+
+**Q10:**
+
+Merge two objects.
+
+```js
+const obj1 = { foo: true, count: 1 };
+const obj2 = { bar: false };
+//{ foo: true, count: 1, bar: false }
+```
+
+**Q10-Answer:**
+
+```js
+const mergeTwoObjects = (a, b) => {
+  var output = {};
+  [a, b].map((obj) => {
+    for (const [key, value] of Object.entries(obj)) {
+      output[key] = value;
+    }
+  });
+  return output;
+};
+const result = mergeTwoObjects(obj1, obj2);
+```
+
+<hr />
+
+**Q11:**
+
+Merge two arrays.
+
+```js
+const a1 = [2, 5, 6, 9];
+const a2 = [1, 2, 3, 29];
+```
+
+```text
+[ 2, 5, 6,  9, 1, 2, 3, 29]
+```
+
+**Q11-Answer-1:**
+
+```js
+const output = a1.concat(a2);
+console.log(output);
+// [  2, 5, 6,  9, 1, 2, 3, 29]
+```
+
+**Q11-Answer-2:**
+
+- Merge two arrays without using `concat()`
+
+```js
+const result = [];
+const array = [a1, a2];
+array.forEach((obj) => {
+  obj.forEach((value) => {
+    result.push(value);
+  });
+});
+```
+
+<hr />
+
+**Q12:**
+
+```js
+const a1 = [2, 5, 6, 9];
+const a2 = [1, 2, 3, 29];
+// expected result =[1,2,3,5,6,9,29]
+```
+
+**Q12-Answer:**
+
+```js
+const merged = a1.concat(a2);
+const result = merged
+  .reduce((acc, currentValue) => {
+    const exist = acc.find((value) => value === currentValue);
+    if (!exist) acc.push(currentValue);
+    return acc;
+  }, [])
+  .sort((a, b) => (a < b ? -1 : 1));
+```
+
+<hr />
+
+**Q13:**
+
+Find a max value.
+
+```js
+const array = [2, 5, 6, 9];
+//9
+```
+
+**Q13-Answer:**
+
+- The pop() method removes the last element.
+- The shift() method removes the first element.
+
+```js
+const max1 = Math.max(...array);
+console.log(max1); //9
+
+const array2 = [2, 9, 6, 5];
+array2.sort((a, b) => (a < b ? -1 : 1)); //[ 2, 5, 6, 9 ]
+const max2 = array2.pop();
+console.log(max2); //9
+
+const array3 = [2, 9, 6, 5];
+array3.sort((a, b) => (a < b ? 1 : -1)); //[ 9, 6, 5, 2 ]
+const max3 = array3.shift();
+console.log(max3); //9
+```
+
+<hr />
+
+**Q14:**
+
+```js
+const array = [5, 6, 1, 3]; //2, 4
+```
+
+**Q14-Answer:**
+
+```js
+const max = Math.max(...array); //6
+const min = Math.min(...array); //1
+
+const missingNum = [];
+
+for (let i = min; i <= max; i++) {
+  const found = array.find((value) => value === i);
+  if (!found) missingNum.push(i);
+}
+
+console.log(missingNum.toString());
+//2,4
+```
+
 <!--
 **Q1:**
 

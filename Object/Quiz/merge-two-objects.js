@@ -1,5 +1,5 @@
-var obj1 = { foo: true, count: 1 };
-var obj2 = { bar: false };
+const obj1 = { foo: true, count: 1 };
+const obj2 = { bar: false };
 
 const mergeTwoObjects = (a, b) => {
   var output = {};
@@ -10,6 +10,5 @@ const mergeTwoObjects = (a, b) => {
   });
   return output;
 };
-
 const result = mergeTwoObjects(obj1, obj2);
 console.log(result);
