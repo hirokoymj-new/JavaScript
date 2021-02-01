@@ -483,6 +483,101 @@ console.log(missingNum.toString());
 //2,4
 ```
 
+<hr />
+
+**Q15:**
+
+```js
+const names = ["Alice", "Bob", "Tiff", "Bruce", "Alice"];
+//{'Alice':2, 'Bob':1, 'Tiff':1, 'Bruce':1}
+```
+
+**Q15-Answer:**
+
+```js
+// new output - object
+// loop - reduce
+// condition - key exists or not
+//
+const output = names.reduce((acc, currentValue) => {
+  const found = acc.hasOwnProperty(currentValue);
+  if (found) {
+    acc[currentValue]++;
+  } else {
+    acc[currentValue] = 1;
+  }
+
+  return acc;
+}, {});
+```
+
+<hr />
+
+**Q16:**
+
+```js
+const friends = [
+  {
+    name: "Anna",
+    books: ["Bible", "Harry Potter"],
+    age: 21,
+  },
+  {
+    name: "Bob",
+    books: ["War and peace", "Romeo and Juliet"],
+    age: 26,
+  },
+  {
+    name: "Alice",
+    books: ["The Lord of the Rings", "The Shining"],
+    age: 18,
+  },
+];
+```
+
+```text
+[
+  'Bible',
+  'Harry Potter',
+  'War and peace',
+  'Romeo and Juliet',
+  'The Lord of the Rings',
+  'The Shining'
+]
+```
+
+**Q16-Answer-1:**
+
+```js
+const output2 = friends.reduce((acc, currentValue) => {
+  acc.push(...currentValue.books);
+  return acc;
+}, []);
+```
+
+**Q16-Answer-2:**
+
+```js
+const output = friends.reduce((acc, currentValue) => {
+  currentValue.books.forEach((value) => {
+    acc.push(value);
+  });
+  return acc;
+}, []);
+```
+
+**Q16-Answer-3:**
+
+```js
+const output2 = friends.reduce((acc, currentValue) => {
+  const newVal = acc.concat(currentValue.books);
+  return newVal;
+}, []);
+console.log(output2);
+```
+
+<hr />
+
 <!--
 **Q1:**
 
