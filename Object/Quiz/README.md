@@ -578,18 +578,84 @@ console.log(output2);
 
 <hr />
 
+**Q17:**
+
+```js
+const array = [3, 5, 2];
+//10
+```
+
+**Q17-Answer:**
+
+```js
+//new output value
+// reduce
+//
+const sum = array.reduce((acc, currentValue) => {
+  return acc + currentValue;
+}, 0);
+
+console.log(sum);
+```
+
+<hr />
+
+**Q18:**
+
+### Downward to the nearest integer
+
+```js
+1.6 -> 1
+```
+
+**Q18-Answer:**
+
+```js
+Math.floor(1.6); //1
+```
+
+<hr />
+
+**Q19:**
+
+### Upward to the nearest integer
+
+```js
+1.4 -> 2
+```
+
+**Q19-Answer:**
+
+```js
+Math.ceil(1.4); //2
+```
+
+<hr />
+
+**Q20:**
+
+## Round the nearest integer
+
+```js
+2.4 -> 2
+2.5 -> 3
+```
+
+**Q20-Answer:**
+
+```js
+Math.round(2.4); //2
+Math.round(2.5); //3
+```
+
+<hr />
+
 <!--
 **Q1:**
-
 ```js
-
 ```
-
-**A1:**
-
+**Q1-Answer:**
 ```js
-
 ```
-
 <hr />
  -->
