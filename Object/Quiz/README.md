@@ -275,35 +275,46 @@ const array = [
   { name: "foo1", value: "val1" },
   { name: "foo1", value: ["val2", "val3"] },
   { name: "foo2", value: "val4" },
+  { name: "foo2", value: "val5" },
+  { name: "foo3", value: ["val6", "valu7"] },
 ];
 ```
 
 ```text
-[ { name: 'foo1', value: [ 'val1', 'val2', 'val3' ] },  { name: 'foo2', value: [ 'val4' ] } ]
+[
+  { name: 'foo1', value: [ 'val1', 'val2', 'val3' ] },
+  { name: 'foo2', value: [ 'val4', 'val5' ] },
+  { name: 'foo3', value: [ 'val6', 'valu7' ] }
+]
 ```
 
 **Q8-Answer:**
 
 ```js
 const output = array.reduce((acc, currentValue) => {
-  const matched = acc.find((value) => value["name"] === currentValue["name"]);
+  const matched = acc.find((obj) => obj.name === currentValue.name);
 
   if (matched) {
-    if (typeof currentValue["value"] === "object") {
-      const newVal = currentValue["value"].concat(matched["value"]);
-      console.log(newVal);
-      matched["value"] = newVal;
+    if (typeof currentValue.value === "string") {
+      matched.value.push(currentValue.value);
     } else {
-      matched["value"] = currentValue["value"];
+      matched.value = currentValue.value.concat(matched.value);
     }
   } else {
     //Not existing
-    currentValue["value"] = [currentValue["value"]];
+    if (typeof currentValue.value === "string")
+      currentValue.value = [currentValue.value];
     acc.push(currentValue);
   }
 
   return acc;
 }, []);
+
+// Sort
+const final = output.map((obj) => {
+  obj.value.sort((a, b) => (a < b ? -1 : 1));
+  return obj;
+});
 ```
 
 <hr />
