@@ -650,12 +650,54 @@ Math.round(2.5); //3
 
 <hr />
 
+**Q21:**
+
+```js
+const unordered = {
+  b: "foo",
+  c: "bar",
+  a: "baz",
+};
+```
+
+```text
+{ a: 'baz', b: 'foo', c: 'bar' }
+```
+
+**Q21-Answer:**
+
+```js
+const newKeys = Object.keys(unordered).sort();
+const result = newKeys.reduce((acc, key) => {
+  acc[key] = unordered[key];
+  return acc;
+}, {});
+```
+
+<hr />
+
+- Is Integer or float?
+- Making Digit
+- Random number
+- Count the items and sorted by large count. (Convert array to array of object)
+- Sort Sum in dataCollection
+- Sort README
+- Array.sort
+- Array.sort for array of object
+- Convert month
+
 <!--
 **Q1:**
+
 ```js
+
 ```
+
 **Q1-Answer:**
+
 ```js
+
 ```
+
 <hr />
  -->
