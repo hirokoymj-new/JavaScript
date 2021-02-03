@@ -15,7 +15,6 @@ keyArray.forEach((key) => {
 console.log(output);
 
 const newKeys = Object.keys(unordered).sort();
-
 const result = newKeys.reduce((acc, key) => {
   acc[key] = unordered[key];
   return acc;
