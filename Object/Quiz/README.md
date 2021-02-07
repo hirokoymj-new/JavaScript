@@ -676,7 +676,28 @@ const result = newKeys.reduce((acc, key) => {
 
 <hr />
 
-- Is Integer or float?
+**Q22:**
+
+Make a function to check if a given value is an integare or float.
+
+```text
+isInt(1.5) -> false
+isInt(824) -> true
+```
+
+**Q22-Answer:**
+
+```js
+const result = (isInt = (a) => {
+  if (a % 1 == 0) {
+    return true;
+  } else {
+    return false;
+  }
+});
+```
+
+<hr />
 - Making Digit
 - Random number
 - Count the items and sorted by large count. (Convert array to array of object)
