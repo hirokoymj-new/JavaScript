@@ -757,7 +757,7 @@ makeDigit2(-43, 5);
 - Math.abs()
 - Math.pow()
 - String.slice(-5)
-  
+
 ```js
 const output = (makeDigit = (value, nth) => {
   const createDigit = Math.pow(10, nth);
@@ -770,8 +770,6 @@ const output = (makeDigit = (value, nth) => {
 
 <hr />
 
-<hr />
-- Making Digit
 - Random number
 - Count the items and sorted by large count. (Convert array to array of object)
 - Sort Sum in dataCollection
