@@ -697,6 +697,79 @@ const result = (isInt = (a) => {
 });
 ```
 
+**Q23:**
+
+```js
+// Array
+let a = [1, 2, 3, 4, 5];
+a.slice(0, 3);
+a.slice(3);
+a.slice(1, -1);
+a.slice(-3, -2);
+
+// String
+const str = "12345";
+
+str.slice(0, 3);
+str.slice(3);
+str.slice(1, -1);
+str.slice(-3, -2);
+```
+
+**Q23-Answer:**
+
+**start**
+
+- The array index at which the slice is to begin. If negative, this argument specifies a position measured from the end of the array. That is, **−1 indicates the last element**, **−2 indicates the next from the last element**, and so on.
+
+**end**
+
+- The array index immediately after the end of the slice. If not specified, the slice includes all array elements from the start to the end of the array. If this argument is negative, it specifies an array element measured from the end of the array.
+- end index does NOT included.
+
+```js
+let a = [1, 2, 3, 4, 5];
+a.slice(0, 3); //[1,2,3]
+a.slice(3); //[4,5]
+a.slice(1, -1); //[2,3,4]
+a.slice(-3, -2); // [3]
+
+const str = "12345";
+str.slice(0, 3)); //123
+str.slice(3)); //45
+str.slice(1, -1)); //234
+str.slice(-3, -2)); //3
+```
+
+<hr />
+
+**Q24:**
+
+Make a digit.
+
+```js
+makeDigit2(-43, 5);
+//the result should be 00043.
+```
+
+**Q24-Answer:**
+
+- Math.abs()
+- Math.pow()
+- String.slice(-5)
+  
+```js
+const output = (makeDigit = (value, nth) => {
+  const createDigit = Math.pow(10, nth);
+  const convertAbs = Math.abs(value);
+  const result = createDigit + convertAbs;
+  const final = result.toString().slice(nth * -1);
+  return final;
+});
+```
+
+<hr />
+
 <hr />
 - Making Digit
 - Random number
