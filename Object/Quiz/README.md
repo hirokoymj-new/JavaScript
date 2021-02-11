@@ -770,8 +770,111 @@ const output = (makeDigit = (value, nth) => {
 
 <hr />
 
-- Random number
-- Count the items and sorted by large count. (Convert array to array of object)
+## Random number
+
+**Q25: Generate random number 0-99**
+
+**Q25-Answer**
+
+- Step 1 Generate random number 0-1(1 is exclosive).
+- Step 2 Multiply max number plus 1(+1).
+- Step 3 Downward the result using Math.floor().
+
+```js
+Math.floor(Math.random() * 100);
+```
+
+<hr />
+
+**Q26: Generate random number 0-50**
+
+**Q26-Answer**
+
+```js
+Math.floor(Math.random() * 51);
+```
+
+<hr />
+
+**Q27: Generate random number 30-90**
+
+**Q27-Answer**
+
+```js
+//Math.floor(Math.random()*91)          // Step1: 0-90
+//Math.floor(30+Math.random()*91)       // Step2: 30-120
+Math.floor(30+(Math.random()*61)        // Step3: 30-90
+```
+
+<hr />
+
+**Q28: Generate random number 1-100**
+
+**Q28-Answer**
+
+```js
+//Math.floor(Math.random()*101);            //Step1: 0-100
+//Math.floor(1+Math.random()*101);          //Step2: 1-101
+Math.floor(1 + Math.random() * 100); //Step 3: 1-100
+```
+
+<hr />
+
+**Q29: Generate random number 1-12**
+**Q29-Answer**
+
+```js
+// Math.floor(Math.random()*13) //0-12
+// Math.floor(1+Math.random()*13) //1-13
+Math.floor(1 + Math.random() * 12); //1-12
+```
+
+<hr />
+
+**Q30: Generate random number 5-7**
+**Q30-Answer**
+
+```js
+// Math.floor(Math.random()*8); //0-7
+// Math.floor(5+Math.random()*8); //5-12
+Math.floor(5 + Math.random() * 3); //5-7
+```
+
+<hr />
+
+**Q31:**
+
+```js
+const array = ["red", "yellow", "red", "blue", "blue", "red"];
+//
+[
+  { color: red, count: 3 },
+  { color: yellow, count: 1 },
+  { color: blue, count: 2 },
+];
+```
+
+**Q31-Answer:**
+
+```js
+const result = array.reduce((acc, currentValue) => {
+  const existObj = acc.find((obj) => obj.color === currentValue);
+  if (existObj) {
+    existObj.count++;
+  } else {
+    acc.push({
+      color: currentValue,
+      count: 1,
+    });
+  }
+  return acc;
+}, []);
+
+console.log(result);
+```
+
+<hr />
+
 - Sort Sum in dataCollection
 - Sort README
 - Array.sort
