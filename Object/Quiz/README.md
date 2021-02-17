@@ -875,6 +875,103 @@ console.log(result);
 
 <hr />
 
+**Q32: - Update array of object**
+
+```js
+const initial = [
+  { id: 0, value: false },
+  { id: 1, value: false },
+];
+```
+
+Result should be here.
+
+```text
+[ { id: 0, value: false }, { id: 1, value: true } ]
+```
+
+**Q32-Answer:**
+
+```js
+const output = initial.map((d) => (d.id === 1 ? { ...d, value: true } : d));
+```
+
+<hr />
+
+**Q33: Update Object**
+
+```js
+let state = {
+  todos: [
+    { id: 1, title: "Eat breakfast", completed: false },
+    { id: 2, title: "Make bed", completed: false },
+  ],
+};
+```
+
+```text
+  todos: [
+    { id: 1, title: "Eat breakfast", completed: false },
+    { id: 2, title: "Make bed", completed: true },
+  ],
+```
+
+**Q33-Answer:**
+
+```js
+state = {
+  ...state,
+  todos: state.todos.map((d) => (d.id === 2 ? { ...d, completed: true } : d)),
+};
+```
+
+<hr />
+
+**Q34:**
+
+```js
+const data = [
+  {
+    userId: 1,
+    id: 100,
+    title: "delectus aut autem",
+    completed: false,
+  },
+  {
+    userId: 1,
+    id: 101,
+    title: "quis ut nam facilis et officia qui",
+    completed: false,
+  },
+  {
+    userId: 1,
+    id: 102,
+    title: "fugiat veniam minus",
+    completed: false,
+  },
+  {
+    userId: 1,
+    id: 103,
+    title: "et porro tempora",
+    completed: true,
+  },
+];
+```
+
+```text
+//101 -> complegted: true
+```
+
+**Q34-Answer:**
+
+```js
+const newState = data.map((obj) =>
+  obj.id === 101 ? { ...obj, completed: true } : obj
+);
+```
+
+<hr />
+
 - Sort Sum in dataCollection
 - Sort README
 - Array.sort
