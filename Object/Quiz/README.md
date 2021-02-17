@@ -884,10 +884,8 @@ const initial = [
 ];
 ```
 
-Result should be here.
-
 ```text
-[ { id: 0, value: false }, { id: 1, value: true } ]
+id: 1, value: true
 ```
 
 **Q32-Answer:**
@@ -910,10 +908,7 @@ let state = {
 ```
 
 ```text
-  todos: [
-    { id: 1, title: "Eat breakfast", completed: false },
-    { id: 2, title: "Make bed", completed: true },
-  ],
+id:2 -> completd : true
 ```
 
 **Q33-Answer:**
