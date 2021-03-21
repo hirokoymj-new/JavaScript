@@ -1063,6 +1063,28 @@ console.log(typeof null); // object
 console.log(typeof {}); // object
 ```
 
+**Q39:**
+
+Find a `value = "5ff5addc7b26d000171ebe0d"`
+
+```js
+const data = [
+  { name: "Database", value: "5ff5addc7b26d000171ebe0d" },
+  { name: "Git", value: "5fec597e5e17e200170e0ffe" },
+  { name: "ES6", value: "5fcadae535b5e444496aeff9" },
+];
+```
+
+**Q39-Answer:**
+
+```js
+const found = data.find((d) => d.value === value);
+console.log(found);
+//{ name: 'Database', value: '5ff5addc7b26d000171ebe0d' }
+```
+
+<hr />
+
 <!--
 **Q1:**
 
