@@ -1032,6 +1032,37 @@ data.sort((a, b) => {
 
 <hr />
 
+**Q37:**
+Falsy values in JavaScript
+
+**Q37-Answer:**
+
+1. false
+2. undefined
+3. null
+4. NaN
+5. 0
+6. empty string
+
+**Q38:**
+
+```js
+typeof null;
+typeof {};
+```
+
+**Q38-Answer:**
+
+```js
+console.log(typeof 1); //number
+console.log(typeof "a"); // string
+console.log(typeof true); //boolean
+console.log(typeof NaN); // number
+console.log(typeof undefined); // undefined
+console.log(typeof null); // object
+console.log(typeof {}); // object
+```
+
 <!--
 **Q1:**
 

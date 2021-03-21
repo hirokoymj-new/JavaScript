@@ -1,5 +1,4 @@
 const data = ["March", "Jan", "August", "Dec"];
-
 const months = [
   "Jan",
   "Feb",
