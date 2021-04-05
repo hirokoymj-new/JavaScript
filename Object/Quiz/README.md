@@ -28,18 +28,21 @@ const obj3 = {
 **A1:**
 
 ```js
-const diff = (obj1, obj2) => {
-  var result = "";
-  for ([key, value] of Object.entries(obj1)) {
-    result = value === obj2[key] ? true : false;
-  }
+const diff = (a, b) => {
+  let result = false;
+  Object.keys(a).map((key) => {
+    result = a[key] === b[key] ? true : false;
+  });
   return result;
 };
 
-console.log(diff(obj1, obj2));
-console.log(diff(obj1, obj3));
-// true
-// false
+const checkDiff = (a, b) => {
+  let result = false;
+  for (const key in a) {
+    result = a[key] === b[key] ? true : false;
+  }
+  return result;
+};
 ```
 
 <hr />
@@ -160,6 +163,25 @@ const output = employees.reduce((acc, currentValue) => {
     matched.count++;
   } else {
     currentValue.user = [currentValue.user];
+    currentValue.count = 1;
+    acc.push(currentValue);
+  }
+  return acc;
+}, []);
+```
+
+**Q4-Answer-2:**
+
+```js
+const result = employees.reduce((acc, currentValue) => {
+  const { skill, user } = currentValue;
+  const found = acc.find((d) => d.skill === skill);
+
+  if (found) {
+    found.user.push(user);
+    found.count++;
+  } else {
+    currentValue.user = [user];
     currentValue.count = 1;
     acc.push(currentValue);
   }
