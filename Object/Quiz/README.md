@@ -187,6 +187,23 @@ const result = employees.reduce((acc, currentValue) => {
   }
   return acc;
 }, []);
+
+const output = employees.reduce((acc, currentValue) => {
+  const { skill, user } = currentValue;
+  const found = acc.find((d) => d.skill === skill);
+
+  if (found) {
+    found.user.push(user);
+    found.count++;
+  } else {
+    acc.push({
+      skill,
+      user: [user],
+      count: 1,
+    });
+  }
+  return acc;
+}, []);
 ```
 
 <hr />
@@ -314,29 +331,45 @@ const array = [
 
 ```js
 const output = array.reduce((acc, currentValue) => {
-  const matched = acc.find((obj) => obj.name === currentValue.name);
+  const { name, value } = currentValue;
+  const found = acc.find((obj) => obj.name === name);
 
-  if (matched) {
-    if (typeof currentValue.value === "string") {
-      matched.value.push(currentValue.value);
+  if (found) {
+    if (typeof value === "string") {
+      found.value.push(value);
     } else {
-      matched.value = currentValue.value.concat(matched.value);
+      found.value = [...found.value, ...value];
     }
   } else {
-    //Not existing
-    if (typeof currentValue.value === "string")
-      currentValue.value = [currentValue.value];
-    acc.push(currentValue);
+    const newVal = typeof value === "string" ? [value] : value;
+    acc.push({ ...currentValue, value: newVal });
+  }
+  return acc;
+}, []);
+
+// #2
+const newArray = array.map((d) => {
+  return {
+    ...d,
+    value: typeof d.value === "string" ? [d.value] : d.value,
+  };
+});
+
+const output = newArray.reduce((acc, currentValue) => {
+  const { name, value } = currentValue;
+  const found = acc.find((d) => d.name === name);
+
+  if (found) {
+    found.value = [...found.value, ...value];
+  } else {
+    acc.push({
+      name,
+      value,
+    });
   }
 
   return acc;
 }, []);
-
-// Sort
-const final = output.map((obj) => {
-  obj.value.sort((a, b) => (a < b ? -1 : 1));
-  return obj;
-});
 ```
 
 <hr />
@@ -377,16 +410,13 @@ const obj2 = { bar: false };
 **Q10-Answer:**
 
 ```js
-const mergeTwoObjects = (a, b) => {
-  var output = {};
-  [a, b].map((obj) => {
-    for (const [key, value] of Object.entries(obj)) {
-      output[key] = value;
-    }
-  });
-  return output;
+// #1
+const output = { ...obj1, ...obj2 };
+
+// #2
+const mergeObjects = (a, b) => {
+  return { ...a, ...b };
 };
-const result = mergeTwoObjects(obj1, obj2);
 ```
 
 <hr />
@@ -417,13 +447,7 @@ console.log(output);
 - Merge two arrays without using `concat()`
 
 ```js
-const result = [];
-const array = [a1, a2];
-array.forEach((obj) => {
-  obj.forEach((value) => {
-    result.push(value);
-  });
-});
+const output = [...a1, ...a2];
 ```
 
 <hr />
@@ -447,6 +471,19 @@ const result = merged
     return acc;
   }, [])
   .sort((a, b) => (a < b ? -1 : 1));
+```
+
+**Q12-Answer-2:**
+
+```js
+const output = [];
+const data = [...a1, ...a2];
+
+data.forEach((d) => {
+  const found = output.find((value) => value === d);
+  if (!found) output.push(d);
+});
+output.sort((a, b) => (a < b ? -1 : 1));
 ```
 
 <hr />
@@ -580,22 +617,10 @@ const output2 = friends.reduce((acc, currentValue) => {
 **Q16-Answer-2:**
 
 ```js
-const output = friends.reduce((acc, currentValue) => {
-  currentValue.books.forEach((value) => {
-    acc.push(value);
-  });
-  return acc;
-}, []);
-```
-
-**Q16-Answer-3:**
-
-```js
-const output2 = friends.reduce((acc, currentValue) => {
-  const newVal = acc.concat(currentValue.books);
-  return newVal;
-}, []);
-console.log(output2);
+let output = [];
+friends.map((obj) => {
+  output = [...output, ...obj.books];
+});
 ```
 
 <hr />
@@ -1103,6 +1128,47 @@ const data = [
 const found = data.find((d) => d.value === value);
 console.log(found);
 //{ name: 'Database', value: '5ff5addc7b26d000171ebe0d' }
+```
+
+<hr />
+
+**Q40:**
+
+```js
+const objects = [
+  { x: 1, y: 1 },
+  { x: 2, y: 3 },
+  { x: 3, y: 3 },
+  { x: 3, y: 4 },
+  { x: 4, y: 5 },
+];
+// output 2
+// obj.x == obj.y => 2 items
+```
+
+**Q40-Answer-1:**
+
+```js
+let result = 0;
+objects.map((obj) => {
+  if (obj.x === obj.y) {
+    result++;
+  }
+});
+console.log(result);
+```
+
+**Q40-Answer-2:**
+
+```js
+const output = objects.reduce((acc, currentValue) => {
+  const { x, y } = currentValue;
+  if (x === y) {
+    acc++;
+  }
+  return acc;
+}, 0);
+console.log(output);
 ```
 
 <hr />
