@@ -1208,6 +1208,43 @@ console.log(days[day]);
 
 <hr />
 
+**Q1:**
+
+- A first letter from a first param
+- abcac abcac -->A first lettter "a" is 4.
+- aba aba aba a --> A first letter "a" is 7.
+
+```js
+repeatedString("abcac", 10); //4
+repeatedString("aba", 10); //7
+```
+
+**Q1-Answer:**
+
+```js
+const repeatedString = (s, n) => {
+  const array = s.split("");
+  let output = [];
+  let index = 0;
+  let i = 0;
+  const firstLetter = s.charAt(0);
+
+  while (i < n) {
+    output.push(array[index]);
+    if (index == array.length - 1) {
+      index = 0;
+    } else {
+      index++;
+    }
+    i++;
+  }
+
+  console.log(output.filter((d) => d === firstLetter).length);
+};
+```
+
+<hr />
+
 <!--
 **Q1:**
 
