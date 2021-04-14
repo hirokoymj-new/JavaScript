@@ -89,22 +89,24 @@ console.log(extend(gdp, income, uRate));
 ```
 
 **Q2-Answer-2**
+[04/07]
 
 ```js
-const extend2 = (a, b, c) => {
-  const output = [a, b, c].reduce((acc, currentValue) => {
-    for (const [key, value] of Object.entries(currentValue)) {
-      if (acc.hasOwnProperty(key)) {
-        acc[key].push(value);
-      } else {
-        acc[key] = typeof value === "object" ? value : [value];
-      }
+const data = [gdp, income, uRate];
+const output = {};
+
+data.map((obj) => {
+  for (const key in obj) {
+    const value = typeof obj[key] === "string" ? [obj[key]] : obj[key];
+    const found = output.hasOwnProperty(key);
+
+    if (found) {
+      output[key] = [...output[key], ...value];
+    } else {
+      output[key] = value;
     }
-    return acc;
-  }, {});
-  return output;
-};
-console.log(extend2(gdp, income, uRate));
+  }
+});
 ```
 
 <hr />
@@ -173,37 +175,23 @@ const output = employees.reduce((acc, currentValue) => {
 **Q4-Answer-2:**
 
 ```js
-const result = employees.reduce((acc, currentValue) => {
-  const { skill, user } = currentValue;
-  const found = acc.find((d) => d.skill === skill);
+const output = [];
+employees.map((employee) => {
+  const { skill, user } = employee;
+  const found = output.find((d) => d.skill == skill);
 
   if (found) {
     found.user.push(user);
     found.count++;
   } else {
-    currentValue.user = [user];
-    currentValue.count = 1;
-    acc.push(currentValue);
-  }
-  return acc;
-}, []);
-
-const output = employees.reduce((acc, currentValue) => {
-  const { skill, user } = currentValue;
-  const found = acc.find((d) => d.skill === skill);
-
-  if (found) {
-    found.user.push(user);
-    found.count++;
-  } else {
-    acc.push({
+    const temp = {
       skill,
       user: [user],
       count: 1,
-    });
+    };
+    output.push(temp);
   }
-  return acc;
-}, []);
+});
 ```
 
 <hr />
@@ -346,30 +334,24 @@ const output = array.reduce((acc, currentValue) => {
   }
   return acc;
 }, []);
+```
 
-// #2
-const newArray = array.map((d) => {
-  return {
-    ...d,
-    value: typeof d.value === "string" ? [d.value] : d.value,
-  };
-});
-
-const output = newArray.reduce((acc, currentValue) => {
-  const { name, value } = currentValue;
-  const found = acc.find((d) => d.name === name);
+```js
+array.map((obj) => {
+  const { name, value } = obj;
+  const newVal = typeof value === "string" ? [value] : value;
+  const found = output.find((d) => d.name == name);
 
   if (found) {
-    found.value = [...found.value, ...value];
+    found.value = [...found.value, ...newVal];
   } else {
-    acc.push({
+    const temp = {
       name,
-      value,
-    });
+      value: newVal,
+    };
+    output.push(temp);
   }
-
-  return acc;
-}, []);
+});
 ```
 
 <hr />
@@ -1169,6 +1151,59 @@ const output = objects.reduce((acc, currentValue) => {
   return acc;
 }, 0);
 console.log(output);
+```
+
+<hr />
+
+**Q41**
+
+### Math - Division/Quotient/remainder
+
+- Quation with interger part, remainder
+
+```js
+10 / 3;
+```
+
+**Q41-Answer:**
+
+```js
+const result = 10 / 3;
+const integerPart = Math.floor(10 / 3);
+const reminder = 10 % 3;
+
+console.log(result);
+console.log(integerPart);
+console.log(reminder);
+
+//3.3333333333333335
+//3
+//1
+```
+
+<hr />
+
+**Q42:**
+
+- Get the day on 2021-04-14
+- Wednesday is the correct day on 2021/04/14.
+
+**Q42-Answer:**
+
+```js
+const days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+
+const today = new Date("2021-04-14");
+const day = today.getDay();
+console.log(days[day]);
 ```
 
 <hr />
