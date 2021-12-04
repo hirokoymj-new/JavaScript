@@ -1208,7 +1208,7 @@ console.log(days[day]);
 
 <hr />
 
-**Q1:**
+**Q43:**
 
 - A first letter from a first param
 - abcac abcac -->A first lettter "a" is 4.
@@ -1219,7 +1219,7 @@ repeatedString("abcac", 10); //4
 repeatedString("aba", 10); //7
 ```
 
-**Q1-Answer:**
+**Q43-Answer:**
 
 ```js
 const repeatedString = (s, n) => {
@@ -1241,6 +1241,31 @@ const repeatedString = (s, n) => {
 
   console.log(output.filter((d) => d === firstLetter).length);
 };
+```
+
+<hr />
+
+[2021/12/5]
+
+**Q44: Updated Object value**
+
+- Update id:1 value to "true"
+
+```js
+const initial = [
+  { id: 0, value: false },
+  { id: 1, value: false },
+];
+```
+
+**Q44-Answer:**
+
+```js
+const result3 = initial.map((v) => {
+  const temp = v.id === 1 ? { ...v, value: true } : v;
+  return temp;
+});
+// [ { id: 0, value: false }, { id: 1, value: true } ]
 ```
 
 <hr />

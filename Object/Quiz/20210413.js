@@ -1,3 +1,49 @@
+// const gdp = {
+//   city: "LA",
+//   gdp: [],
+// };
+
+// const income = {
+//   city: "LA",
+//   income: [],
+// };
+
+// const uRate = {
+//   city: "SF",
+//   uRate: [],
+// };
+// //{ city: [ 'LA', 'LA', 'SF' ], gdp: [], income: [], uRate: [] }
+// // output: {}
+// // map, Object.keys
+
+// const output = {};
+// const data = [gdp, income, uRate];
+
+// data.forEach((obj) => {
+//   Object.keys(obj).map((key) => {
+//     const found = output.hasOwnProperty(key);
+//     const newVal = typeof obj[key] === "string" ? [obj[key]] : obj[key];
+
+//     if (found) {
+//       output[key] = [...output[key], ...newVal];
+//     } else {
+//       output[key] = newVal;
+//     }
+//   });
+// });
+
+// console.log(output);
+
+// const myArray = [
+//   { color: "red", name: "redName" },
+//   { color: "blue", name: "blueName" },
+//   { color: "green", name: "greenName" },
+//   { color: "yellow", name: "yellowName" },
+// ];
+
+// const result = myArray.map((d) => d.color).indexOf("blue");
+// console.log(result);
+
 const array = [
   { name: "foo1", value: "val1" },
   { name: "foo1", value: ["val2", "val3"] },
@@ -11,28 +57,28 @@ const array = [
 //   { name: 'foo3', value: [ 'val6', 'valu7' ] }
 // ]
 
-// output []
-// map
-// condition name=value is existed or not
-
-const output = [];
-
-array.map((obj) => {
+const newArray = array.map((obj) => {
   const { name, value } = obj;
   const newVal = typeof value === "string" ? [value] : value;
 
-  const found = output.find((d) => d.name === name);
-
-  if (found) {
-    found.value = [...found.value, ...newVal];
-  } else {
-    const temp = {
-      name,
-      value: newVal,
-    };
-    console.log(temp);
-    output.push(temp);
-  }
+  return {
+    name,
+    value: newVal,
+  };
 });
 
-console.log(output);
+const result = [];
+newArray.map((obj) => {
+  const { name, value } = obj;
+});
+
+const output = Object.keys(obj).map((key) => {
+  console.log(key);
+});
+
+const output2 = array.map((obj) => {
+  const { name, key } = obj;
+  const newVal = typeof name === "string" ? true : false;
+});
+
+const { color, size, onClick, text } = props;
