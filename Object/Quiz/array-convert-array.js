@@ -25,6 +25,11 @@ const friends = [
   'The Shining' ]
  */
 
+const output = [];
+friends.forEach((d) => {
+  output.push(...d.books);
+});
+
 const output = friends.reduce((acc, currentValue) => {
   currentValue.books.forEach((value) => {
     acc.push(value);
