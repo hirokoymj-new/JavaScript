@@ -16,35 +16,18 @@ const array = [
 */
 
 const output = array.reduce((acc, currentValue) => {
-  const matched = acc.find((obj) => obj.name === currentValue.name);
+  const found = acc.find((d) => d.name === currentValue.name);
+  const newValue =
+    typeof currentValue.value === "string"
+      ? [currentValue.value]
+      : currentValue.value;
 
-  if (matched) {
-    if (typeof currentValue.value === "string") {
-      matched.value.push(currentValue.value);
-    } else {
-      matched.value = currentValue.value.concat(matched.value);
-    }
+  if (found) {
+    found.value = [...found.value, ...newValue];
   } else {
-    //Not existing
-    if (typeof currentValue.value === "string")
-      currentValue.value = [currentValue.value];
-    acc.push(currentValue);
+    acc.push({ name: currentValue.name, value: [...newValue] });
   }
-
   return acc;
 }, []);
 
 console.log(output);
-
-const final = output.map((obj) => {
-  obj.value.sort((a, b) => (a < b ? -1 : 1));
-  return obj;
-});
-console.log(final);
-
-// let obj = { name: "foo1", value: "val1" };
-// // for (key in obj) {
-// //   if (key === "value") obj.value = [obj[key]];
-// // }
-
-//http://stackoverflow.com/questions/33850412/merge-javascript-objects-in-array-with-same-key/33850863

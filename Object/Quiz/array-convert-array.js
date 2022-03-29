@@ -26,20 +26,17 @@ const friends = [
  */
 
 const output = friends.reduce((acc, currentValue) => {
-  currentValue.books.forEach((value) => {
-    acc.push(value);
-  });
+  acc.push(...currentValue.books);
   return acc;
 }, []);
 
-// console.log(output);
+console.log(output);
 
-// New output - Array
-// Loop - reduce
-// condition - three dot or forEach or concat()
-//
-const output2 = friends.reduce((acc, currentValue) => {
-  const newVal = acc.concat(currentValue.books);
-  return newVal;
-}, []);
-console.log(output2);
+// [
+//   'Bible',
+//   'Harry Potter',
+//   'War and peace',
+//   'Romeo and Juliet',
+//   'The Lord of the Rings',
+//   'The Shining'
+// ]

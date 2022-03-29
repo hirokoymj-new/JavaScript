@@ -5,8 +5,8 @@ const a2 = [1, 2, 3, 29];
 const merged = a1.concat(a2);
 const result = merged
   .reduce((acc, currentValue) => {
-    const exist = acc.find((value) => value === currentValue);
-    if (!exist) acc.push(currentValue);
+    const found = acc.find((value) => value === currentValue);
+    if (!found) acc.push(currentValue);
     return acc;
   }, [])
   .sort((a, b) => (a < b ? -1 : 1));

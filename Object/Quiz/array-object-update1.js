@@ -11,3 +11,10 @@ const initial = [
 const output = initial.map((d) => (d.id === 1 ? { ...d, value: true } : d));
 
 console.log(output);
+
+const output13 = initial.map((obj) => {
+  if (obj.id === 1) {
+    obj.value = true;
+  }
+  return obj;
+});
