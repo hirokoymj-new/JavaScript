@@ -173,6 +173,7 @@ p1.then(function (value) {
 ```
 
 <hr />
+
 # Quiz
 
 **Q1:**
