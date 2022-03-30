@@ -1270,6 +1270,38 @@ const result3 = initial.map((v) => {
 
 <hr />
 
+**Q45:**
+
+- Find different items between two arrays.
+- Use `reduce()`
+
+```js
+const array1 = ["Open"];
+const masterArray = ["Open", "Confirmed", "False Positive", "Fixed"];
+// find different items - ["Confirmed", "False Positive", "Fixed"]
+```
+
+**Q45-Answer:**
+
+```js
+const array1 = ["Open"];
+const masterArray = ["Open", "Confirmed", "False Positive", "Fixed"];
+// find different items - ["Confirmed", "False Positive", "Fixed"]
+
+const output1 = masterArray.reduce((acc, currentVal) => {
+  const found = array1.find((d) => d === currentVal);
+  const isFound = Boolean(found);
+  if (!isFound) {
+    acc.push(currentVal);
+  }
+  return acc;
+}, []);
+
+console.log("different items: ", output1);
+```
+
+<hr />
+
 <!--
 **Q1:**
 
